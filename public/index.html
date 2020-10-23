@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack/Babel-demo</title>
+  <title>CA2</title>
 </head>
 
 <body>
@@ -15,89 +15,79 @@
   -->
   <div id="all-content" style="display: none;">
     <ul id="menu" class="header">
-      <li><a href="" id="about">About</a></li>
-      <li><a href="" id="ex1">Ex1</a></li>
-      <li><a href="" id="ex2">Ex2</a></li>
-      <li><a href="" id="ex3">Ex3</a></li>
+      <li>
+        <a href="" id="about">About</a>
+      </li>
+      <li>
+        <a href="" id="manage_person">Manage Person</a>
+      </li>
+      <li>
+        <a href="" id="search">Search For Queries</a>
+      </li>
     </ul>
-
     <div class="content">
-
-      <!-- This is were you should place your basic HTML for exercise-1 -->
-      <div id="ex1_html" style="display:none;">
-        <h3>Exercise 1</h3>
-        <p>Add your basic HTML for Exercise 1 here</p>
-        <ul id="jokes"></ul>
-
-      </div>
-      <!-- End of HTML for exercise-1 -->
-
-
-
-      <!-- This is were you should place your basic HTML for exercise-2 -->
-      <div id="ex2_html" style="display:none;">
-        <h3>Exercise 2</h3>
-        <p id="ex2p">Add your basic HTML for Exercise 2 here</p>
-      </div>
-      <!-- End of HTML for exercise-2 -->
-
-
-      <!-- This is were you should place your basic HTML for exercise-3 -->
-      <div id="ex3_html" style="display:none;">
-        <h3>Ex-3</h3>
-        <p>Add your basic HTML for Exercise 3 here</p>
-
-        <div class="row" style="min-height: 5em;"">
-      <div class=" col-md-8 pre-scrollable" style="background-color: lightgrey;">
-          <h5>All Users</h5>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Age</th>
-                <th>Name
-                <th>
-                <th>Gender</th>
-                <th>Email </th>
-            </thead>
-            <tbody id="allUserRows">
-            <tbody>
-          </table>
+      <div id="personTable">
+        <h2>Search Results</h2>
+        <div style="min-height: 200px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last name</th>
+                        <th>Phone</th>
+                        <th>Street</th>
+                        <th>Zip</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
         </div>
-        <div class="col-md-4" style="background-color: powderblue;">
-          <h5>Find User</h5>
-        </div>
-      </div>
-      <div class="row" style="min-height: 5em;">
-        <div class="col-md-4" style="background-color: powderblue;">
-          <h5>Add User</h5>
-        </div>
-        <div class="col-md-4" style="background-color: lightgrey;">
-          <h5>Edit User</h5>
-        </div>
-        <div class="col-md-4" style="background-color: powderblue;">
-          <h5>Delete User</h5>
-        </div>
-      </div>
-      <!-- </div> -->
-      <!-- End of HTML for exercise-3 -->
-
-      <!---- HTML for the About page -->
-      <div id="about_html" style="display:none;">
-        <h3>About</h3>
-        <p>Watch the small video given as intro to this code, BEFORE you start using it</p>
-      </div>
-      <!-- End of HTML for ABOUT Page -->
-
     </div>
+      <div id="search_html" style="display:none;">
+        <div>
+          <input type="text" id="searchField" value="" placeholder="Search for something" style="width: 352px;">
+        </div>
+        <div style="padding-bottom: 10px;"></div>
+        <button id="submitHobby" class="btn" style="background-color: rgb(190, 195, 204); margin-right: 5px;">Search for hobby</button>
+        <button id="personByZip" class="btn" style="background-color: rgb(190, 195, 204)">Search for people by
+          zip</button>
 
-    <!--End of all content -->
-  </div>
-
-  <!-- #################################################################-->
-  <!-- IMPORTANT  DO NOT IMPORT ANY JavaScript in this file by YOURSELF -->
-  <!-- #################################################################-->
-
+      </div>
+      <div id="manage_person_html" style="display:none;">
+        <div class="row"></div>
+          <div class="col-md-4">
+            <h5>Add/Edit Person</h5>
+            <input type="number" id="inputID"  value="" placeholder="ID - Only add if editing"style="width: 220px;"/>
+            <input type="text" id="inputFirstName"  value="" placeholder="First Name" style="width: 220px;"/>
+            <input type="text" id="inputLastName"  value="" placeholder="Last Name"style="width: 220px;"/>
+            <input type="number" id="inputPhone"  value=""placeholder="Phone Number"style="width: 220px;"/>
+            <input type="text" id="inputHobby"  value=""placeholder="Hobby"style="width: 220px;"/>
+            <input type="email" id="inputEmail"  value=""placeholder="Email" style="width: 220px;"/>
+            <button id="addPersonBtn" class="btn" style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Add Person</button>
+            <button id="editPersonBtn" class="btn"style="background-color:rgb(190, 195, 204);margin-top: 10px;">Edit Person</button>
+           
+          </div>
+        </div>
+        <div id="about_html" style="display:none;">
+          <p>Group Members: Magda, Noell, Selina & Søren
+          </p>
+          <a href="https://docs.google.com/document/d/1pk76XqwpxS7-H8cYjQVtaL0IHOM6XqYklHAh3e74noU/">API Documentation</a>
+          <br>
+          <a href="https://github.com/kasarama/Gruppe9CA2">Github Backend</a>
+          <br>
+          <a href="https://github.com/NoellZane/CA2F">Github Frontend</a>
+          <br>
+          <a href="https://docs.google.com/document/d/1sxfuE077BwebBS4m4bp1eaHhi8iOIWrDvWZvPAggdmU/edit#heading=h.3ym5ml5vfwss">Project Diary</a>
+        </div>
+      </div>
+      </div>
+      <!--End of all content -->
+    </div>
+    <!-- #################################################################-->
+    <!-- IMPORTANT  DO NOT IMPORT ANY JavaScript in this file by YOURSELF -->
+    <!-- #################################################################-->
 </body>
 
 </html>
