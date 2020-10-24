@@ -26,6 +26,10 @@ function handleHttpErrors(res){
     return fetch(URL + "allpeople") //Returns promise
     .then(handleHttpErrors);
    }
+   function getAllPersonsFromCity(city){
+    return fetch(URL + "livingin/"+city) //Returns promise
+    .then(handleHttpErrors);
+   }
    function addPerson(person){
      let options = makeOptions("POST",person)
     return fetch(URL,options) //Returns promise
@@ -47,6 +51,7 @@ function handleHttpErrors(res){
     getAllPersons,
     addPerson,
     editPerson,
-    deletePerson
+    deletePerson,
+    getAllPersonsFromCity
   };
    export default personFacade;

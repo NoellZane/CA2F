@@ -29,58 +29,65 @@ function menuItemClicked(evt) {
 }
 document.getElementById("menu").onclick = menuItemClicked;
 hideAllShowOne("about_html");
-
+function makeTable(data){
+  const createTable = data.map(function (data){
+    return (`
+    <tr>
+      <td>
+      ${data.id}
+      </td>    
+      <td>
+      ${data.firstName}
+      </td>    
+      <td>
+      ${data.lastName}
+      </td>    
+      <td>
+      ${data.email}
+      </td> 
+      <td>
+      ${data.phoneList}
+      </td>
+      <td>
+      ${data.address.street}
+      </td>
+      <td>
+      ${data.address.zip}
+      </td>
+      <td>
+      ${data.address.city}
+      </td>
+      <td>
+      ${data.address.additionalInfo}
+      </td>          
+      <td>
+      ${data.hobbyList[0].name}
+      </td>          
+    </tr>
+    `)
+  }).join(" ")
+  return createTable;
+}
 function renderAllPersons(){
   personFacade.getAllPersons().then((persons) => {
     console.log(persons);
-    const personRows = persons.map(
-      (person) => `
-      <tr>
-        <td>
-        ${person.id}
-        </td>    
-        <td>
-        ${person.firstName}
-        </td>    
-        <td>
-        ${person.lastName}
-        </td>    
-        <td>
-        ${person.email}
-        </td> 
-        <td>
-        ${person.phoneList}
-        </td>
-        <td>
-        ${person.address.street}
-        </td>
-        <td>
-        ${person.address.zip}
-        </td>
-        <td>
-        ${person.address.city}
-        </td>
-        <td>
-        ${person.address.additionalInfo}
-        </td>          
-        <td>
-        ${person.hobbyList[0].name}
-        </td>          
-      </tr>
-      `
-    );
-    const personRowsAsString = personRows.join("");
     //console.log(users);//To check if we get any data
-    document.getElementById("tbody").innerHTML = personRowsAsString;
-
-    function getNumbers(phoneList) {
-      var numb = " ";
-      numb += phoneList.description + " - ";
-      numb += phoneList.number;
-      return numb;
-      
-    }
+    document.getElementById("tbody").innerHTML = makeTable(persons);
   });
+}
+function getAllPersonsFromCity(){
+  let city = document.getElementById("searchField").value;
+personFacade.getAllPersonsFromCity(city).then((persons) => {
+  console.log(persons);
+  //console.log(users);//To check if we get any data
+  document.getElementById("tbody").innerHTML = makeTable(persons);
+});
 }
 renderAllPersons();
 
+document.getElementById("personByCity").addEventListener("click", function (event) {
+  event.preventDefault();
+getAllPersonsFromCity();
+
+
+});
