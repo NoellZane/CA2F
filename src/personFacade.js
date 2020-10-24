@@ -38,6 +38,10 @@ function handleHttpErrors(res){
     return fetch(URL + "personlist/"+hobby) //Returns promise
     .then(handleHttpErrors);
    }
+   function getAllZipCodes(){
+    return fetch(URL + "allzipcodes/") //Returns promise
+    .then(handleHttpErrors);
+   }
    function addPerson(person){
      let options = makeOptions("POST",person)
     return fetch(URL,options) //Returns promise
@@ -62,6 +66,7 @@ function handleHttpErrors(res){
     deletePerson,
     getAllPeopleByCity,
     getAllPeopleByZip,
-    getAllPeopleByHobby
+    getAllPeopleByHobby,
+    getAllZipCodes
   };
    export default personFacade;

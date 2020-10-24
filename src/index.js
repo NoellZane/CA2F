@@ -29,6 +29,21 @@ function menuItemClicked(evt) {
 }
 document.getElementById("menu").onclick = menuItemClicked;
 hideAllShowOne("about_html");
+function makeZipTableRows(data){
+  const createTable = data.map(function (data){
+    return (`
+    <tr>
+      <td>
+      ${data.zipCode}
+      </td>    
+      <td>
+      ${data.city}
+      </td>    
+    </tr>
+    `)
+  }).join(" ")
+  return createTable;
+}
 function makeTable(data){
   const createTable = data.map(function (data){
     return (`
@@ -97,18 +112,42 @@ personFacade.getAllPeopleByHobby(hobby).then((persons) => {
 });
 }
 
+function getAllZipCodes(){
+personFacade.getAllZipCodes().then((data) => {
+  // console.log(data);//To check if we get any data
+  let zipTable = `<table class="table"><thead><tr><th>Zip</th><th>City</th></tr></thead>`;
+  document.getElementById("forZip").innerHTML = zipTable+makeZipTableRows(data);
+  console.log(makeZipTableRows(data));
+});
+}
+
 document.getElementById("peopleByCity").addEventListener("click", function (event) {
   event.preventDefault();
+  document.getElementById("personTable").style= "display:block"
+  document.getElementById("forZip").style= "display:none"
   getAllPeopleByCity();
 });
 
 document.getElementById("peopleByZip").addEventListener("click", function (event) {
   event.preventDefault();
+  document.getElementById("personTable").style= "display:block"
+  document.getElementById("forZip").style= "display:none"
   getAllPeopleByZip();
 });
 document.getElementById("submitHobby").addEventListener("click", function (event) {
   event.preventDefault();
-  getAllPeopleByHobby()
+  document.getElementById("personTable").style= "display:block"
+  document.getElementById("forZip").style= "display:none"
+
+  getAllPeopleByHobby();
+
+});
+document.getElementById("getAllZipCodes").addEventListener("click", function (event) {
+  event.preventDefault();
+  document.getElementById("personTable").style= "display:none"
+  document.getElementById("forZip").style= "display:block"
+  getAllZipCodes();
+ 
 });
 
 renderAllPeople();
