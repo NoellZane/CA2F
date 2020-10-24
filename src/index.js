@@ -10,11 +10,11 @@ function hideAllShowOne(idToShow) {
   document.getElementById("search_html").style = "display:none"
   document.getElementById("manage_person_html").style = "display:none"
   document.getElementById(idToShow).style = "display:block"
-  if (idToShow === "about_html") {
-    document.getElementById("personTable").style = "display:none"
+  if (idToShow === "manage_person_html") {
+    document.getElementById("personTable").style = "display:block"
   }
   else {
-    document.getElementById("personTable").style = "display:block"
+    document.getElementById("personTable").style = "display:none"
   }
 }
 
@@ -61,7 +61,10 @@ function makeTable(data) {
       ${data.email}
       </td> 
       <td>
-      ${data.phoneList}
+      ${data.phoneList.map(phone=>phone.number).join(", ")}
+      </td>
+      <td>
+      ${data.phoneList.map(phone=>phone.description).join(", ")}
       </td>
       <td>
       ${data.address.street}
@@ -76,7 +79,7 @@ function makeTable(data) {
       ${data.address.additionalInfo}
       </td>          
       <td>
-      ${data.hobbyList[0].name}
+      ${data.hobbyList.map(hobby=>hobby.name).join(", ")}
       </td>          
     </tr>
     `)
