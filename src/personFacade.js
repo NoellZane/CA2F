@@ -22,12 +22,20 @@ function handleHttpErrors(res){
     return opts;
    }
 
-   function getAllPersons(){
+   function getAllPeople(){
     return fetch(URL + "allpeople") //Returns promise
     .then(handleHttpErrors);
    }
-   function getAllPersonsFromCity(city){
+   function getAllPeopleByCity(city){
     return fetch(URL + "livingin/"+city) //Returns promise
+    .then(handleHttpErrors);
+   }
+   function getAllPeopleByZip(zip){
+    return fetch(URL + "peoplebyzip/"+zip) //Returns promise
+    .then(handleHttpErrors);
+   }
+   function getAllPeopleByHobby(hobby){
+    return fetch(URL + "personlist/"+hobby) //Returns promise
     .then(handleHttpErrors);
    }
    function addPerson(person){
@@ -48,10 +56,12 @@ function handleHttpErrors(res){
   }
    const personFacade = {
     //Object with the five functions in it
-    getAllPersons,
+   getAllPeople,
     addPerson,
     editPerson,
     deletePerson,
-    getAllPersonsFromCity
+    getAllPeopleByCity,
+    getAllPeopleByZip,
+    getAllPeopleByHobby
   };
    export default personFacade;

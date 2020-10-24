@@ -68,26 +68,47 @@ function makeTable(data){
   }).join(" ")
   return createTable;
 }
-function renderAllPersons(){
-  personFacade.getAllPersons().then((persons) => {
+function renderAllPeople(){
+  personFacade.getAllPeople().then((persons) => {
     console.log(persons);
-    //console.log(users);//To check if we get any data
-    document.getElementById("tbody").innerHTML = makeTable(persons);
+  // console.log(persons);//To check if we get any data
+      document.getElementById("tbody").innerHTML = makeTable(persons);
   });
 }
-function getAllPersonsFromCity(){
+function getAllPeopleByCity(){
   let city = document.getElementById("searchField").value;
-personFacade.getAllPersonsFromCity(city).then((persons) => {
-  console.log(persons);
-  //console.log(users);//To check if we get any data
+personFacade.getAllPeopleByCity(city).then((persons) => {
+  // console.log(persons);//To check if we get any data 
+   document.getElementById("tbody").innerHTML = makeTable(persons);
+});
+}
+function getAllPeopleByZip(){
+  let zip = document.getElementById("searchField").value;
+personFacade.getAllPeopleByZip(zip).then((persons) => {
+  // console.log(persons);//To check if we get any data
   document.getElementById("tbody").innerHTML = makeTable(persons);
 });
 }
-renderAllPersons();
-
-document.getElementById("personByCity").addEventListener("click", function (event) {
-  event.preventDefault();
-getAllPersonsFromCity();
-
-
+function getAllPeopleByHobby(){
+  let hobby = document.getElementById("searchField").value;
+personFacade.getAllPeopleByHobby(hobby).then((persons) => {
+  // console.log(persons);//To check if we get any data
+  document.getElementById("tbody").innerHTML = makeTable(persons);
 });
+}
+
+document.getElementById("peopleByCity").addEventListener("click", function (event) {
+  event.preventDefault();
+  getAllPeopleByCity();
+});
+
+document.getElementById("peopleByZip").addEventListener("click", function (event) {
+  event.preventDefault();
+  getAllPeopleByZip();
+});
+document.getElementById("submitHobby").addEventListener("click", function (event) {
+  event.preventDefault();
+  getAllPeopleByHobby()
+});
+
+renderAllPeople();
