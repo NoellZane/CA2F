@@ -72,6 +72,14 @@ function renderAllPersons(){
     const personRowsAsString = personRows.join("");
     //console.log(users);//To check if we get any data
     document.getElementById("tbody").innerHTML = personRowsAsString;
+
+    function getNumbers(phoneList) {
+      var numb = " ";
+      numb += phoneList.description + " - ";
+      numb += phoneList.number;
+      return numb;
+      
+    }
   });
 }
 renderAllPersons();
