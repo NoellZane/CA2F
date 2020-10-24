@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CA2</title>
 </head>
+
 <body>
   <!--
     This div is added to remove the flicker that comes from bootstrap being loaded
@@ -29,31 +30,32 @@
       <div id="personTable">
         <h2>Search Results</h2>
         <div style="min-height: 200px;">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Street</th>
-                        <th>Zip</th>
-                        <th>City</th>
-                        <th>Additional Info</th>
-                        <th>Hobby</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody"></tbody>
-            </table>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Street</th>
+                <th>Zip</th>
+                <th>City</th>
+                <th>Additional Info</th>
+                <th>Hobby</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
         </div>
-    </div>
+      </div>
       <div id="search_html" style="display:none;">
         <div>
           <input type="text" id="searchField" value="" placeholder="Search for something" style="width: 352px;">
         </div>
         <div style="padding-bottom: 10px;"></div>
-        <button id="submitHobby" class="btn" style="background-color: rgb(190, 195, 204); margin-right: 5px;">Search for hobby</button>
+        <button id="submitHobby" class="btn" style="background-color: rgb(190, 195, 204); margin-right: 5px;">Search for
+          hobby</button>
         <button id="peopleByCity" class="btn" style="background-color: rgb(190, 195, 204)">Search for people by
           city</button>
         <button id="peopleByZip" class="btn" style="background-color: rgb(190, 195, 204)">Search for people by
@@ -63,38 +65,82 @@
       </div>
       <div id="manage_person_html" style="display:none;">
         <div class="row"></div>
-          <div class="col-md-4">
-            <h5>Add/Edit Person</h5>
-            <input type="number" id="inputID"  value="" placeholder="ID - Only add if editing"style="width: 220px;"/>
-            <input type="text" id="inputFirstName"  value="" placeholder="First Name" style="width: 220px;"/>
-            <input type="text" id="inputLastName"  value="" placeholder="Last Name"style="width: 220px;"/>
-            <input type="number" id="inputPhone"  value=""placeholder="Phone Number"style="width: 220px;"/>
-            <input type="text" id="inputHobby"  value=""placeholder="Hobby"style="width: 220px;"/>
-            <input type="email" id="inputEmail"  value=""placeholder="Email" style="width: 220px;"/>
-            <button id="addPersonBtn" class="btn" style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Add Person</button>
-            <button id="editPersonBtn" class="btn"style="background-color:rgb(190, 195, 204);margin-top: 10px;">Edit Person</button>
-          </div>
+        <div class="col-md-4">
+          <h5>Add/Edit Person</h5>
+          <input type="number" id="inputID" placeholder="ID - Only add if editing" style="width: 220px;" />
+          <input type="text" id="inputFirstName" placeholder="First Name" style="width: 220px;" />
+          <input type="text" id="inputLastName" placeholder="Last Name" style="width: 220px;" />
+          <input type="email" id="inputEmail" placeholder="Email" style="width: 220px;" />
+          <input type="number" id="inputNumber" placeholder="Phone Number" style="width: 220px;" />
+          <input type="text" id="inputPhoneDescription" placeholder="Phone description" style="width: 220px;" />
+          <input type="text" id="inputStreet" placeholder="Street" style="width: 220px;"/>
+          <input type="text" id="inputAdditionalInfo" placeholder="Addres additional info" style="width: 220px;"/>
+          <select id="inputZip" style="width: 220px;">
+            <option selected>ZipCode...</option>
+            <option value="2200">2200</option>
+            <option value="2880">2880</option>
+            <option value="2635">2635</option>
+          </select>
+          <input type="text" id="inputCity" placeholder="City" style="width: 220px;" disabled />
+          
+
+          <input type="text" id="inputHobby" value="" placeholder="Hobby" style="width: 220px;" disabled />
+
+
+          <!--
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Options</label>
+              </div>
+              <select  class="custom-select" id="inputGroupSelect01">
+                <option type="radio" selected>Choose...</option>
+                <option type="radio"value="1">One</option>
+                <option type="radio"value="2">Two</option>
+                <optiontype="radio" value="3">Three</option>
+              </select>
+            </div>
+
+-->
+          <br/>
+          <button id="addPersonBtn" class="btn"
+            style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Add Person</button>
+          <button id="editPersonBtn" class="btn" style="background-color:rgb(190, 195, 204);margin-top: 10px;">Edit
+            Person</button>
         </div>
-        <div id="about_html" style="display:none;">
-          <p>Manage Person allows you to add and edit a person</p>
-          <p>Search Queries allows you to search for various things</p>
-          <p>Group Members: Magda, Noell, Selina & Søren
-          </p>
-          <a href="https://docs.google.com/document/d/1pk76XqwpxS7-H8cYjQVtaL0IHOM6XqYklHAh3e74noU/">API Documentation</a>
-          <br>
-          <a href="https://github.com/kasarama/Gruppe9CA2">Github Backend</a>
-          <br>
-          <a href="https://github.com/NoellZane/CA2F">Github Frontend</a>
-          <br>
-          <a href="https://docs.google.com/document/d/1sxfuE077BwebBS4m4bp1eaHhi8iOIWrDvWZvPAggdmU/edit#heading=h.3ym5ml5vfwss">Project Diary</a>
+
+        <div class="col-md-4">
+          <p2 id="error">Error holder</p2>
         </div>
       </div>
+
+
+
+
+
+
+
+      <div id="about_html" style="display:none;">
+        <p>Manage Person allows you to add and edit a person</p>
+        <p>Search Queries allows you to search for various things</p>
+        <p>Group Members: Magda, Noell, Selina & Søren
+        </p>
+        <a href="https://docs.google.com/document/d/1pk76XqwpxS7-H8cYjQVtaL0IHOM6XqYklHAh3e74noU/">API Documentation</a>
+        <br>
+        <a href="https://github.com/kasarama/Gruppe9CA2">Github Backend</a>
+        <br>
+        <a href="https://github.com/NoellZane/CA2F">Github Frontend</a>
+        <br>
+        <a
+          href="https://docs.google.com/document/d/1sxfuE077BwebBS4m4bp1eaHhi8iOIWrDvWZvPAggdmU/edit#heading=h.3ym5ml5vfwss">Project
+          Diary</a>
       </div>
-      <!--End of all content -->
     </div>
-    <!-- #################################################################-->
-    <!-- IMPORTANT  DO NOT IMPORT ANY JavaScript in this file by YOURSELF -->
-    <!-- #################################################################-->
+  </div>
+  <!--End of all content -->
+  </div>
+  <!-- #################################################################-->
+  <!-- IMPORTANT  DO NOT IMPORT ANY JavaScript in this file by YOURSELF -->
+  <!-- #################################################################-->
 </body>
 
 </html>
