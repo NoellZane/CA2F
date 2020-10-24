@@ -31,8 +31,8 @@ document.getElementById("menu").onclick = menuItemClicked;
 hideAllShowOne("about_html");
 
 function renderAllPersons(){
-
   personFacade.getAllPersons().then((persons) => {
+    console.log(persons);
     const personRows = persons.map(
       (person) => `
       <tr>
@@ -40,25 +40,39 @@ function renderAllPersons(){
         ${person.id}
         </td>    
         <td>
-        ${person.age}
+        ${person.firstName}
         </td>    
         <td>
-        ${person.name}
+        ${person.lastName}
         </td>    
-        <td>
-        ${person.gender}
-        </td> 
         <td>
         ${person.email}
-        </td>  
+        </td> 
+        <td>
+        ${person.phoneList}
+        </td>
+        <td>
+        ${person.address.street}
+        </td>
+        <td>
+        ${person.address.zip}
+        </td>
+        <td>
+        ${person.address.city}
+        </td>
+        <td>
+        ${person.address.additionalInfo}
+        </td>          
+        <td>
+        ${person.hobbyList[0].name}
+        </td>          
       </tr>
       `
     );
     const personRowsAsString = personRows.join("");
     //console.log(users);//To check if we get any data
-    document.getElementById("allPersonRows").innerHTML = personRowsAsString;
+    document.getElementById("tbody").innerHTML = personRowsAsString;
   });
 }
 renderAllPersons();
-
 

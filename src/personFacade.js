@@ -1,4 +1,4 @@
-const URL = "http://localhost:3333/api/users/";
+const URL = "https://dosmarter.tech/CA2/api/person/";
 
 function handleHttpErrors(res){
     if(!res.ok){
@@ -23,7 +23,7 @@ function handleHttpErrors(res){
    }
 
    function getAllPersons(){
-    return fetch(URL + "all") //Returns promise
+    return fetch(URL + "allpeople") //Returns promise
     .then(handleHttpErrors);
    }
    function addPerson(person){
