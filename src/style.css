@@ -10,7 +10,7 @@ From here https://www.w3schools.com/css/css_navbar.asp
 tr:nth-child(even) {background-color: white;}
 tr:hover {background-color:#969595f5;}
 tbody {
-  background-color: rgb(190, 195, 204);  
+  background-color: rgb(190, 195, 204); 
 }
 ul.header {
   list-style-type: none;

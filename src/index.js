@@ -12,9 +12,13 @@ function hideAllShowOne(idToShow) {
   document.getElementById(idToShow).style = "display:block"
   if (idToShow === "manage_person_html") {
     document.getElementById("personTable").style = "display:block"
+    document.getElementById("forZip").style = "display:none"
+
   }
   else {
     document.getElementById("personTable").style = "display:none"
+    document.getElementById("forZip").style = "display:none"
+
   }
 }
 
@@ -88,7 +92,6 @@ function makeTable(data) {
 }
 function renderAllPeople() {
   personFacade.getAllPeople().then((persons) => {
-    console.log(persons);
     // console.log(persons);//To check if we get any data
     document.getElementById("tbody").innerHTML = makeTable(persons);
   })
@@ -129,15 +132,15 @@ function getAllZipCodes() {
     // console.log(data);//To check if we get any data
     let zipTable = `<table class="table"><thead><tr><th>Zip</th><th>City</th></tr></thead>`;
     document.getElementById("forZip").innerHTML = zipTable + makeZipTableRows(data);
-    console.log(makeZipTableRows(data));
+    // console.log(makeZipTableRows(data));
   })
   .catch(err => {
     if (err.status) {
       err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
     }
     else {
-      document.getElementById("error").innerHTML ="Network error has accured: could load zip codes"
-      console.log("Network error! Cold not load zip codes")
+      document.getElementById("error").innerHTML ="Network error has occured: could not load zip codes"
+      console.log("Network error! Could not load zip codes")
     }
   })
   ;
@@ -205,7 +208,7 @@ personFacade.getAllHobbies().then(data => {
         chosenHobbyList.push(hobby)
       }
       });
-      console.log(chosenHobbyList)
+      // console.log(chosenHobbyList)
       const newPerson = {
         firstName: document.getElementById("inputFirstName").value,
         lastName: document.getElementById("inputLastName").value,
@@ -227,8 +230,8 @@ personFacade.getAllHobbies().then(data => {
   
       }
   
-  console.log(newPerson)
-      const perosn = personFacade.addPerson(newPerson)
+  // console.log(newPerson)
+      const person = personFacade.addPerson(newPerson)
         .then(document.getElementById("error").innerHTML = "PERSON ADD")
         .then(renderAllPeople())
         .catch(err => {
