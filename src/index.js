@@ -156,8 +156,10 @@ function addListeners() {
 
 function readNumbersofPerson(personID) {
   console.log("called readNumbers ")
+  let i = 0;
+  let is=[];
   personFacade.getAllPhones(personID).then(phones => {
-    let i = 0;
+    //let i = 0;
     let phoneTableELements = []
     let tableEnd = `
     <tr>
@@ -175,20 +177,29 @@ function readNumbersofPerson(personID) {
 
     phones.forEach(phone => {
       i += 1
-
+is.push(i)
       phoneTableELements.push(`
       <tr>
         <th scope="row">${i}</th>
         <td>${phone.number}<br>${phone.description}</td>
-        <td>delete</td>
+        <td><button id ="deletePhone${i}" value="${phone.number}" class="btn">delete</button></td>
       </tr>`)
+      let phoneBtnId = `deletePhone${i}`
+      console.log(phoneBtnId)
+     // addDeleteListener(phoneBtnId)
+
+
 
     });
+    
     phoneTableELements.push(tableEnd)
     document.getElementById("phoneTable").innerHTML = phoneTableELements.join("")
-
-  })
+    addDeleteListener(is)
+  }
+  )
 }
+
+
 document.getElementById("addGivenPhone").addEventListener("click", function (event) {
   event.preventDefault
   let phoneNumber = document.getElementById("newPhoneNumber").value
@@ -203,14 +214,44 @@ document.getElementById("addGivenPhone").addEventListener("click", function (eve
 })
 
 
+
+
+function addDeleteListener(is) {
+  is.forEach(element => {
+    console.log("element :"+element )
+    document.getElementById("deletePhone"+element).addEventListener("click", function (event) {
+      event.preventDefault
+      console.log("clicked on delete button)")
+      let phone = {
+        number: document.getElementById("deletePhone"+element).value
+      }
+      let personID = document.getElementById("editID").value
+      personFacade.deletePhone(phone, personID)
+        .then(readNumbersofPerson(personID))
+        .catch(err => {
+          if (err.status) {
+            err.fullError.then(e => document.getElementById("error1").innerHTML = e.message)//send to innerHTML
+          }
+          else {
+            document.getElementById("error").innerHTML = "Network error has accured: could not delete phone"
+            console.log("Network error! Cold not delete phone")
+          }
+        })
+    })
+  });
+
+
+}
+
+
 function addNewPhone(phone, personID) {
 
   personFacade.addPhoneNumber(phone, personID)
     .then(readNumbersofPerson(personID))
     //.then(document.getElementById("addGivenPhone").disabled=true)
-    .then(document.getElementById("addGivenPhone").innerHTML="Add next number")
+    .then(document.getElementById("addGivenPhone").innerHTML = "Add next number")
     .then(readNumbersofPerson(personID))
-    
+
     .catch(err => {
       if (err.status) {
         err.fullError.then(e => document.getElementById("error1").innerHTML = e.message)//send to innerHTML
@@ -224,20 +265,6 @@ function addNewPhone(phone, personID) {
 
 
 
-function deleteOnePhone(phone, personID) {
-  personFacade.deletePhone(phone, personID)
-    .then(readNumbersofPerson(personID))
-    .catch(err => {
-      if (err.status) {
-        err.fullError.then(e => document.getElementById("error1").innerHTML = e.message)//send to innerHTML
-      }
-      else {
-        document.getElementById("error").innerHTML = "Network error has accured: could not delete phone"
-        console.log("Network error! Cold not delete phone")
-      }
-    })
-
-}
 
 
 function renderAllPeople() {

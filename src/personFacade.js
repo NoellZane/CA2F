@@ -65,7 +65,7 @@ function deletePerson(id) {
 
 function deletePhone(phone, id) {
   let options = makeOptions("DELETE", phone);
-  return (fetch(URL + "deletephone/" + id)
+  return (fetch(URL + "deletephone/"+id, options)
     .then(handleHttpErrors)
   ) 
 }
