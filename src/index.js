@@ -91,6 +91,15 @@ function renderAllPeople() {
     console.log(persons);
     // console.log(persons);//To check if we get any data
     document.getElementById("tbody").innerHTML = makeTable(persons);
+  })
+  .catch(err => {
+    if (err.status) {
+      err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
+    }
+    else {
+      document.getElementById("error").innerHTML ="Network error has accured: could not load the list of people"
+      console.log("Network error! Cold not add  load the list of people")
+    }
   });
 }
 function getAllPeopleByCity() {
@@ -121,7 +130,17 @@ function getAllZipCodes() {
     let zipTable = `<table class="table"><thead><tr><th>Zip</th><th>City</th></tr></thead>`;
     document.getElementById("forZip").innerHTML = zipTable + makeZipTableRows(data);
     console.log(makeZipTableRows(data));
-  });
+  })
+  .catch(err => {
+    if (err.status) {
+      err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
+    }
+    else {
+      document.getElementById("error").innerHTML ="Network error has accured: could load zip codes"
+      console.log("Network error! Cold not load zip codes")
+    }
+  })
+  ;
 }
 
 function fillUpZipCodes() {
@@ -136,6 +155,15 @@ function fillUpZipCodes() {
     document.getElementById("inputZip").innerHTML = optionsAsString
     
     })
+    .catch(err => {
+      if (err.status) {
+        err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
+      }
+      else {
+        document.getElementById("error").innerHTML ="Network error has accured: could not load zip codes"
+        console.log("Network error! Cold not load zipcodes")
+      }
+    })
   }
 
   function fillUpHobbyBox(){
@@ -148,6 +176,15 @@ function fillUpZipCodes() {
       `)
       const checkboxAsString=checkbox.join("")
       document.getElementById("hobbyBox").innerHTML=checkboxAsString
+    })
+    .catch(err => {
+      if (err.status) {
+        err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
+      }
+      else {
+        document.getElementById("error").innerHTML ="Network error has accured: could load hobbies"
+        console.log("Network error! Cold not could load hobbies")
+      }
     })
   }
 
@@ -194,8 +231,26 @@ personFacade.getAllHobbies().then(data => {
       const perosn = personFacade.addPerson(newPerson)
         .then(document.getElementById("error").innerHTML = "PERSON ADD")
         .then(renderAllPeople())
+        .catch(err => {
+          if (err.status) {
+            err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
+          }
+          else {
+            document.getElementById("error").innerHTML ="Network error has accured: could not add new person"
+            console.log("Network error! Cold not add PErson")
+          }
+        })
   
     
+    })
+    .catch(err => {
+      if (err.status) {
+        err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
+      }
+      else {
+        document.getElementById("error").innerHTML ="Network error has accured: could not could load hobbies"
+        console.log("Network error! Cold not could load hobbies")
+      }
     })
 
     
@@ -237,3 +292,5 @@ document.getElementById("peopleByCity").addEventListener("click", function (even
   renderAllPeople();
   fillUpZipCodes();
   fillUpHobbyBox();
+
+ 
