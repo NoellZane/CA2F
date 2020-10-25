@@ -124,105 +124,116 @@ function getAllZipCodes() {
   });
 }
 
+function fillUpZipCodes() {
+
+  personFacade.getAllZipCodes().then(data => {
+    let options = `<option selected disabled>ZipCode...</option>`
+    const optionList = data.map(zip => `
+  <option value="${zip.zipCode}">${zip.zipCode}</option>  
+  `)
+    const optionsAsString = options + optionList.join("")
+
+    document.getElementById("inputZip").innerHTML = optionsAsString
+    
+    })
+  }
+
+  function fillUpHobbyBox(){
+    personFacade.getAllHobbies().then(data => {
+      let checkbox = data.map(hobby => `
+      <input type="checkbox" value="${hobby.name}" id="${hobby.name}">
+            <label for="${hobby.name}">
+            ${hobby.name}
+            </label>
+      `)
+      const checkboxAsString=checkbox.join("")
+      document.getElementById("hobbyBox").innerHTML=checkboxAsString
+    })
+  }
+
 
 
 let buttAddPerson = document.getElementById("addPersonBtn")
 
 buttAddPerson.addEventListener("click", function (event) {
-  event.preventDefault
-
-
-  /*
-  {
-  "id": 5,
-    "firstName": "Eva",
-    "lastName": "Amen",
-    "email": "eee@mail",
-    "phoneList": [
-      {
-        "number": 9846,
-        "description": "private"
+    event.preventDefault
+ 
+personFacade.getAllHobbies().then(data => {
+  let chosenHobbyList =[]
+      data.forEach(element => {
+        if(document.getElementById(element.name).checked){
+               const hobby = {
+          name: element.name
+        }
+        chosenHobbyList.push(hobby)
       }
-    ],
-    "hobbyList": [
-      {
-        "name": "Lego",
-        "wikiLink": "https://en.wikipedia.org/wiki/Lego",
-        "personList": [],
-        "category": "Generel",
-        "type": "Indendørs"
+      });
+      console.log(chosenHobbyList)
+      const newPerson = {
+        firstName: document.getElementById("inputFirstName").value,
+        lastName: document.getElementById("inputLastName").value,
+        email: document.getElementById("inputEmail").value,
+        phoneList: [
+          {
+            number: document.getElementById("inputNumber").value,
+            description: document.getElementById("inputPhoneDescription").value
+          }],
+  
+        hobbyList: chosenHobbyList,
+  
+        address: {
+          zip: document.getElementById("inputZip").value,
+          additionalInfo: document.getElementById("inputAdditionalInfo").value,
+          street: document.getElementById("inputStreet").value,
+          city: "Default"
+        }
+  
       }
-    ],
-    "address": {
-      "street": "SomeStreet",
-      "additionalInfo": "Info",
-      "zip": "2880",
-      "city": "Bagsværd"
-    }
-  }*/
-
-  const newPerson = {
-    firstName: document.getElementById("inputFirstName").value,
-    lastName: document.getElementById("inputLastName").value,
-    email: document.getElementById("inputEmail"),
-    phoneList: [
-      {
-        number: document.getElementById("inputNumber").value,
-        description: document.getElementById("inputPhoneDescription")
-      }],
-
-    address: {
-      zip: document.getElementById("inputZip").value,
-      additionalInfo: document.getElementById("inputAdditionalInfo").value,
-      street: document.getElementById("inputStreet").value,
-      city: "Default"
-    }
-
-  }
-
-  console.log("hohoho " + newPerson)
-  personFacade.addPerson(newPerson)
-    .then(document.getElementById("error").innerHTML = "PERSONADD")
-    .catch(err => {
-      if (err.status) {
-        err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
-      }
-      else {
-        console.log(err.message)
-      }
+  
+  console.log(newPerson)
+      const perosn = personFacade.addPerson(newPerson)
+        .then(document.getElementById("error").innerHTML = "PERSON ADD")
+        .then(renderAllPeople())
+  
+    
     })
 
-})
+    
+    
+
+  })
 
 
 
 document.getElementById("peopleByCity").addEventListener("click", function (event) {
-  event.preventDefault();
-  document.getElementById("personTable").style = "display:block"
-  document.getElementById("forZip").style = "display:none"
-  getAllPeopleByCity();
-});
+    event.preventDefault();
+    document.getElementById("personTable").style = "display:block"
+    document.getElementById("forZip").style = "display:none"
+    getAllPeopleByCity();
+  });
 
-document.getElementById("peopleByZip").addEventListener("click", function (event) {
-  event.preventDefault();
-  document.getElementById("personTable").style = "display:block"
-  document.getElementById("forZip").style = "display:none"
-  getAllPeopleByZip();
-});
-document.getElementById("submitHobby").addEventListener("click", function (event) {
-  event.preventDefault();
-  document.getElementById("personTable").style = "display:block"
-  document.getElementById("forZip").style = "display:none"
+  document.getElementById("peopleByZip").addEventListener("click", function (event) {
+    event.preventDefault();
+    document.getElementById("personTable").style = "display:block"
+    document.getElementById("forZip").style = "display:none"
+    getAllPeopleByZip();
+  });
+  document.getElementById("submitHobby").addEventListener("click", function (event) {
+    event.preventDefault();
+    document.getElementById("personTable").style = "display:block"
+    document.getElementById("forZip").style = "display:none"
 
-  getAllPeopleByHobby();
+    getAllPeopleByHobby();
 
-});
-document.getElementById("getAllZipCodes").addEventListener("click", function (event) {
-  event.preventDefault();
-  document.getElementById("personTable").style = "display:none"
-  document.getElementById("forZip").style = "display:block"
-  getAllZipCodes();
+  });
+  document.getElementById("getAllZipCodes").addEventListener("click", function (event) {
+    event.preventDefault();
+    document.getElementById("personTable").style = "display:none"
+    document.getElementById("forZip").style = "display:block"
+    getAllZipCodes();
 
-});
+  });
 
-renderAllPeople();
+  renderAllPeople();
+  fillUpZipCodes();
+  fillUpHobbyBox();

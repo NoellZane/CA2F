@@ -65,54 +65,55 @@
 
       </div>
       <div id="manage_person_html" style="display:none;">
-        <div class="row"></div>
-        <div class="col-md-4">
-          <h5>Add/Edit Person</h5>
-          <input type="number" id="inputID" placeholder="ID - Only add if editing" style="width: 220px;" />
-          <input type="text" id="inputFirstName" placeholder="First Name" style="width: 220px;" />
-          <input type="text" id="inputLastName" placeholder="Last Name" style="width: 220px;" />
-          <input type="email" id="inputEmail" placeholder="Email" style="width: 220px;" />
-          <input type="number" id="inputNumber" placeholder="Phone Number" style="width: 220px;" />
-          <input type="text" id="inputPhoneDescription" placeholder="Phone description" style="width: 220px;" />
-          <input type="text" id="inputStreet" placeholder="Street" style="width: 220px;"/>
-          <input type="text" id="inputAdditionalInfo" placeholder="Addres additional info" style="width: 220px;"/>
-          <select id="inputZip" style="width: 220px;">
-            <option selected>ZipCode...</option>
-            <option value="2200">2200</option>
-            <option value="2880">2880</option>
-            <option value="2635">2635</option>
-          </select>
-          <input type="text" id="inputCity" placeholder="City" style="width: 220px;" disabled />
-          
-
-          <input type="text" id="inputHobby" value="" placeholder="Hobby" style="width: 220px;" disabled />
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Add/Edit Person</h5>
+            <input type="number" id="inputID" placeholder="ID - Only add if editing" style="width: 220px;" />
+            <input type="text" id="inputFirstName" placeholder="First Name" style="width: 220px;" />
+            <input type="text" id="inputLastName" placeholder="Last Name" style="width: 220px;" />
+            <input type="email" id="inputEmail" placeholder="Email" style="width: 220px;" />
+            <input type="number" id="inputNumber" placeholder="Phone Number" style="width: 220px;" />
+            <input type="text" id="inputPhoneDescription" placeholder="Phone description" style="width: 220px;" />
+            <input type="text" id="inputStreet" placeholder="Street" style="width: 220px;" />
+            <input type="text" id="inputAdditionalInfo" placeholder="Addres additional info" style="width: 220px;" />
+            <select id="inputZip" style="width: 220px;">
+              <option selected disabled>ZipCode...</option>
+              <option value="1710">1710</option>
+              <option value="1711">1711</option>
+              <option value="1712">1712</option>
+            </select>
+            <input type="text" id="inputCity" placeholder="City" style="width: 220px;" disabled />
 
 
-          <!--
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Options</label>
-              </div>
-              <select  class="custom-select" id="inputGroupSelect01">
-                <option type="radio" selected>Choose...</option>
-                <option type="radio"value="1">One</option>
-                <option type="radio"value="2">Two</option>
-                <optiontype="radio" value="3">Three</option>
-              </select>
-            </div>
+            <input type="text" id="inputHobby" value="" placeholder="Choos some Hobbies from the box" style="width: 220px;" disabled />
 
--->
-          <br/>
-          <button id="addPersonBtn" class="btn"
-            style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Add Person</button>
-          <button id="editPersonBtn" class="btn" style="background-color:rgb(190, 195, 204);margin-top: 10px;">Edit
-            Person</button>
+
+
+
+
+            <br />
+            <button id="addPersonBtn" class="btn"
+              style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Add Person</button>
+            <button id="editPersonBtn" class="btn" style="background-color:rgb(190, 195, 204);margin-top: 10px;">Edit
+              Person</button>
+          </div>
+
+
+          <div id="hobbyBox" class="col-md-4" style="float: left;">
+            <input type="checkbox" value="" id="defaultCheck1">
+            <label for="defaultCheck1">
+              Default checkbox
+            </label>
+          </div>
+
+
+
         </div>
-
         <div class="col-md-4">
           <p2 id="error">Error holder</p2>
         </div>
       </div>
+
 
 
 

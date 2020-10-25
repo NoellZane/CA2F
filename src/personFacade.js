@@ -21,6 +21,10 @@ function handleHttpErrors(res){
     }
     return opts;
    }
+   function getAllHobbies(){
+    return fetch(URL + "allhobbylist") //Returns promise
+    .then(handleHttpErrors);
+   }
 
    function getAllPeople(){
     return fetch(URL + "allpeople") //Returns promise
@@ -67,6 +71,7 @@ function handleHttpErrors(res){
     getAllPeopleByCity,
     getAllPeopleByZip,
     getAllPeopleByHobby,
-    getAllZipCodes
+    getAllZipCodes,
+    getAllHobbies
   };
    export default personFacade;
