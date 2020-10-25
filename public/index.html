@@ -85,7 +85,8 @@
             <input type="text" id="inputCity" placeholder="City" style="width: 220px;" disabled />
 
 
-            <input type="text" id="inputHobby" value="" placeholder="Choos some Hobbies from the box" style="width: 220px;" disabled />
+            <input type="text" id="inputHobby" value="" placeholder="Choos some Hobbies from the box"
+              style="width: 220px;" disabled />
 
 
 
@@ -136,6 +137,63 @@
           href="https://docs.google.com/document/d/1sxfuE077BwebBS4m4bp1eaHhi8iOIWrDvWZvPAggdmU/edit#heading=h.3ym5ml5vfwss">Project
           Diary</a>
       </div>
+
+
+      <div id="edit_person_html" style="display:none;">
+
+
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Edit Person</h5>
+            <input type="number" id="editID" placeholder="ID - Only add if editing" style="width: 220px;" />
+            <input type="text" id="editFirstName" placeholder="First Name" style="width: 220px;" />
+            <input type="text" id="editLastName" placeholder="Last Name" style="width: 220px;" />
+            <input type="email" id="editEmail" placeholder="Email" style="width: 220px;" />
+            <input type="number" id="editNumber" placeholder="Phone Number" style="width: 220px;" />
+            <input type="text" id="editPhoneDescription" placeholder="Phone description" style="width: 220px;" />
+            <input type="text" id="editStreet" placeholder="Street" style="width: 220px;" />
+            <input type="text" id="editAdditionalInfo" placeholder="Addres additional info" style="width: 220px;" />
+            <select id="editZip" style="width: 220px;">
+              <option selected disabled>ZipCode...</option>
+              <option value="1710">1710</option>
+              <option value="1711">1711</option>
+              <option value="1712">1712</option>
+            </select>
+            <input type="text" id="editCity" placeholder="City" style="width: 220px;" disabled />
+
+
+            <input type="text" id="editHobby" value="" placeholder="Choos some Hobbies from the box"
+              style="width: 220px;" disabled />
+
+
+
+
+
+            <br />
+            <button id="editPersonBtn" class="btn"
+              style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Edit Person</button>
+            
+          </div>
+
+
+          <div id="hobbyBox1" class="col-md-4" style="float: left;">
+            <input type="checkbox" value="" id="defaultCheck1">
+            <label for="defaultCheck1">
+              Default checkbox
+            </label>
+          </div>
+
+
+
+        </div>
+        <div class="col-md-4">
+          <p2 id="error1">Error holder</p2>
+        </div>
+
+
+      </div>
+
+
     </div>
   </div>
   <!--End of all content -->
