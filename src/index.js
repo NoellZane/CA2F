@@ -4,7 +4,6 @@ import personFacade from "./personFacade";
 
 document.getElementById("all-content").style.display = "block"
 
-
 function hideAllShowOne(idToShow) {
   document.getElementById("about_html").style = "display:none"
   document.getElementById("search_html").style = "display:none"
@@ -100,8 +99,8 @@ function renderAllPeople() {
       err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
     }
     else {
-      document.getElementById("error").innerHTML ="Network error has accured: could not load the list of people"
-      console.log("Network error! Cold not add  load the list of people")
+      document.getElementById("error").innerHTML ="Network error has occurred: could not load the list of people"
+      console.log("Network error! Could not load the list of people")
     }
   });
 }
@@ -139,7 +138,7 @@ function getAllZipCodes() {
       err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
     }
     else {
-      document.getElementById("error").innerHTML ="Network error has occured: could not load zip codes"
+      document.getElementById("error").innerHTML ="Network error has occurred: could not load zip codes"
       console.log("Network error! Could not load zip codes")
     }
   })
@@ -163,8 +162,8 @@ function fillUpZipCodes() {
         err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
       }
       else {
-        document.getElementById("error").innerHTML ="Network error has accured: could not load zip codes"
-        console.log("Network error! Cold not load zipcodes")
+        document.getElementById("error").innerHTML ="Network error has occurred: could not load zip codes"
+        console.log("Network error! Could not load zip codes")
       }
     })
   }
@@ -185,8 +184,8 @@ function fillUpZipCodes() {
         err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
       }
       else {
-        document.getElementById("error").innerHTML ="Network error has accured: could load hobbies"
-        console.log("Network error! Cold not could load hobbies")
+        document.getElementById("error").innerHTML ="Network error has occurred: could not load hobbies"
+        console.log("Network error! Could not could load hobbies")
       }
     })
   }
@@ -239,8 +238,8 @@ personFacade.getAllHobbies().then(data => {
             err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
           }
           else {
-            document.getElementById("error").innerHTML ="Network error has accured: could not add new person"
-            console.log("Network error! Cold not add PErson")
+            document.getElementById("error").innerHTML ="Network error has occurred: could not add new person"
+            console.log("Network error! Could not add Person")
           }
         })
   
@@ -251,8 +250,8 @@ personFacade.getAllHobbies().then(data => {
         err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
       }
       else {
-        document.getElementById("error").innerHTML ="Network error has accured: could not could load hobbies"
-        console.log("Network error! Cold not could load hobbies")
+        document.getElementById("error").innerHTML ="Network error has occurred: could not load hobbies"
+        console.log("Network error! Could not load hobbies")
       }
     })
 
