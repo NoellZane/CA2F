@@ -80,12 +80,73 @@ function makeTable(data) {
       </td>          
       <td>
       ${data.hobbyList.map(hobby=>hobby.name).join(", ")}
-      </td>          
+      </td>
+      <td>
+      <button id="x${data.id}" class="btn" style="background-color:rgb(190, 195, 204);margin-top: 10px;">Edit</button>
+      </td>              
     </tr>
     `)
   }).join(" ")
+
   return createTable;
 }
+
+
+
+function addListeners(){
+  personFacade.getAllPeople().then((persons) => {
+  
+  persons.forEach(element => {
+    
+    let buttonToEdit=document.getElementById("x"+element.id)
+    
+    buttonToEdit.addEventListener("click", function (event){
+      event.preventDefault
+      hideAllShowOne("edit_person_html");
+      fillUpHobbyBox("hobbyBoxE")
+      document.getElementById("editID").value=element.id
+      document.getElementById("editID").placeholder=element.id
+      document.getElementById("editFirstName").placeholder=element.firstName
+      document.getElementById("editLastName").placeholder=element.lastName
+      document.getElementById("editEmail").placeholder=element.email
+      document.getElementById("editStreet").placeholder=element.address.street
+      document.getElementById("editAdditionalInfo").placeholder=element.address.additionalInfo
+      document.getElementById("editCity").placeholder=element.address.city
+      document.getElementById("editZip").placeholder=element.address.zip 
+
+      document.getElementById("editPersonBtn").addEventListener("click", function(event){
+        event.preventDefault
+
+      const  editedPerson= {
+          id: element.id,
+          firstName: document.getElementById("editFirstName").value,
+          lastName: document.getElementById("editLastName").value,
+          email: document.getElementById("editEmail").value
+        }
+        personFacade.editPerson(editedPerson)
+        .then(document.getElementById("error1").innerHTML = "PERSON EDITED")
+        .then(renderAllPeople())
+        .catch(err => {
+          if (err.status) {
+            err.fullError.then(e => document.getElementById("error1").innerHTML = e.message)//send to innerHTML
+          }
+          else {
+            document.getElementById("error").innerHTML ="Network error has accured: could not add new person"
+            console.log("Network error! Cold not add PErson")
+          }
+        })
+      })
+      
+
+  
+      
+  });
+  
+  })
+})
+}
+
+
 function renderAllPeople() {
   personFacade.getAllPeople().then((persons) => {
     console.log(persons);
@@ -153,7 +214,9 @@ function fillUpZipCodes() {
     const optionsAsString = options + optionList.join("")
 
     document.getElementById("inputZip").innerHTML = optionsAsString
-    
+    document.getElementById("editZip").innerHTML = optionsAsString
+
+
     })
     .catch(err => {
       if (err.status) {
@@ -166,7 +229,7 @@ function fillUpZipCodes() {
     })
   }
 
-  function fillUpHobbyBox(){
+  function fillUpHobbyBox(idOfBox){
     personFacade.getAllHobbies().then(data => {
       let checkbox = data.map(hobby => `
       <input type="checkbox" value="${hobby.name}" id="${hobby.name}">
@@ -175,18 +238,21 @@ function fillUpZipCodes() {
             </label>
       `)
       const checkboxAsString=checkbox.join("")
-      document.getElementById("hobbyBox").innerHTML=checkboxAsString
+      //document.getElementById("hobbyBox").innerHTML=checkboxAsString
+      document.getElementById(idOfBox).innerHTML=checkboxAsString
+
     })
     .catch(err => {
       if (err.status) {
         err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
       }
       else {
-        document.getElementById("error").innerHTML ="Network error has accured: could load hobbies"
-        console.log("Network error! Cold not could load hobbies")
+        document.getElementById("error").innerHTML ="Network error has accurred: could not load hobbies"
+        console.log("Network error! Could not load hobbies")
       }
     })
   }
+
 
 
 
@@ -248,8 +314,8 @@ personFacade.getAllHobbies().then(data => {
         err.fullError.then(e => document.getElementById("error").innerHTML = e.message)//send to innerHTML
       }
       else {
-        document.getElementById("error").innerHTML ="Network error has accured: could not could load hobbies"
-        console.log("Network error! Cold not could load hobbies")
+        document.getElementById("error").innerHTML ="Network error has accured: could not  load hobbies"
+        console.log("Network error! Cold not load hobbies")
       }
     })
 
@@ -291,6 +357,7 @@ document.getElementById("peopleByCity").addEventListener("click", function (even
 
   renderAllPeople();
   fillUpZipCodes();
-  fillUpHobbyBox();
+  fillUpHobbyBox("hobbyBox");
+  addListeners();
 
  

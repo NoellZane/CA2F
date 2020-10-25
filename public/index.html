@@ -44,6 +44,7 @@
                 <th>City</th>
                 <th>Additional Info</th>
                 <th>Hobby</th>
+                <th>More</th>
               </tr>
             </thead>
             <tbody id="tbody"></tbody>
@@ -68,7 +69,7 @@
         <div class="row">
           <div class="col-md-4">
             <h5>Add</h5>
-            <input type="number" id="inputID" placeholder="ID - Only add if editing" style="width: 220px;" disabled/>
+            <input type="number" id="inputID" placeholder="ID - Only add if editing" style="width: 220px;" disabled />
             <input type="text" id="inputFirstName" placeholder="First Name" style="width: 220px;" />
             <input type="text" id="inputLastName" placeholder="Last Name" style="width: 220px;" />
             <input type="email" id="inputEmail" placeholder="Email" style="width: 220px;" />
@@ -85,13 +86,14 @@
             <input type="text" id="inputCity" placeholder="City" style="width: 220px;" disabled />
 
 
-            <input type="text" id="inputHobby" value="" placeholder="Choos some Hobbies from the box" style="width: 220px;" disabled />
+            <input type="text" id="inputHobby" value="" placeholder="Choos some Hobbies from the box"
+              style="width: 220px;" disabled />
 
 
             <br />
             <button id="addPersonBtn" class="btn"
               style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Add Person</button>
-              <p3 id="error"> </p3>
+            <p3 id="error"> </p3>
           </div>
 
 
@@ -101,15 +103,58 @@
               Default checkbox
             </label>
           </div>
+        </div>
+      </div>
+
+
+      <div id="edit_person_html" style="display:none;">
+
+
+        <div class="row">
+          <div class="col-md-3">
+            <h5>Edit Person</h5>
+            <input type="number" id="editID" placeholder="ID" style="width: 220px;" disabled />
+            <input type="text" id="editFirstName" placeholder="First Name" style="width: 220px;" />
+            <input type="text" id="editLastName" placeholder="Last Name" style="width: 220px;" />
+            <input type="email" id="editEmail" placeholder="Email" style="width: 220px;" />
+            <input type="text" id="editStreet" placeholder="Street" style="width: 220px;" disabled />
+            <input type="text" id="editAdditionalInfo" placeholder="Addres additional info" style="width: 220px;"
+              disabled />
+            <input type="text" id="editZip" placeholder="Zip" style="width: 220px;" disabled />
+            <input type="text" id="editCity" placeholder="City" style="width: 220px;" disabled />
+
+
+
+
+
+
+
+            <br />
+            <button id="editPersonBtn" class="btn"
+              style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Edit Person</button>
+            <p2 id="error1"> </p2>
+
+          </div>
+
+          <div id="moreOption" class="col-md-3" style="float: left;">
+            <p1>here comes add hoby and add phone</p1>
+          </div>
+
+
+
+          <div id="hobbyBoxE" class="col-md-6" style="float: left;">
+
+            <input type="text" id="editHobby" value="" placeholder="Choos some Hobbies above" style="width: 220px;"
+              disabled />
+          </div>
 
 
 
         </div>
-        
+
+
+
       </div>
-
-
-
 
 
 

@@ -54,7 +54,7 @@ function handleHttpErrors(res){
    function editPerson(person){
     let options = makeOptions("PUT", person);
     // console.log(options);
-    return fetch(URL+id, options)
+    return fetch(URL+person.id, options)
     .then(handleHttpErrors);
   }
   function deletePerson(id) {
