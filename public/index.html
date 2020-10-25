@@ -111,8 +111,8 @@
 
 
         <div class="row">
-          <div class="col-md-3">
-            <h5>Edit Person</h5>
+          <div id="editResult" class="col-md-3" style="padding: 2%; float: left" ;>
+            <h5>General Info</h5>
             <input type="number" id="editID" placeholder="ID" style="width: 220px;" disabled />
             <input type="text" id="editFirstName" placeholder="First Name" style="width: 220px;" />
             <input type="text" id="editLastName" placeholder="Last Name" style="width: 220px;" />
@@ -123,26 +123,42 @@
             <input type="text" id="editZip" placeholder="Zip" style="width: 220px;" disabled />
             <input type="text" id="editCity" placeholder="City" style="width: 220px;" disabled />
 
-
-
-
-
-
-
             <br />
             <button id="editPersonBtn" class="btn"
-              style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Edit Person</button>
+              style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Save new data</button>
             <p2 id="error1"> </p2>
 
           </div>
 
-          <div id="moreOption" class="col-md-3" style="float: left;">
-            <p1>here comes add hoby and add phone</p1>
+          <div id="phoneNumbersBox" class="col-md-3" style="float: left; padding: 2%;">
+            <h5>Phone numbers</h5>
+            <div class="table-responsive">
+              <table class="table table-sm table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="phoneTable">
+                </tbody>
+              </table>
+              <button id ="addGivenPhone" class="btn"
+              style="background-color: rgb(190, 195, 204); margin-right: 5px; margin-top: 10px;">Add new phone</button>
+            </div>
+          </div>
+
+          <div id="PersonsHobbies" class="col-md-6" style="float: left; padding: 2%;">
+            <input type="number" placeholder="ID" style="width: 220px;" disabled />
+            <input type="text" placeholder="First Name" style="width: 220px;" />
+            <input type="text" placeholder="Last Name" style="width: 220px;" />
+            <input type="email" placeholder="Email" style="width: 220px;" />
           </div>
 
 
 
-          <div id="hobbyBoxE" class="col-md-6" style="float: left;">
+          <div id="hobbyBoxE" class="col-md-12" style="float: left; padding: 2%;">
 
             <input type="text" id="editHobby" value="" placeholder="Choos some Hobbies above" style="width: 220px;"
               disabled />
