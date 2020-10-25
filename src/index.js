@@ -157,7 +157,7 @@ function addListeners() {
 function readNumbersofPerson(personID) {
   console.log("called readNumbers ")
   let i = 0;
-  let is=[];
+  let is = [];
   personFacade.getAllPhones(personID).then(phones => {
     //let i = 0;
     let phoneTableELements = []
@@ -177,7 +177,7 @@ function readNumbersofPerson(personID) {
 
     phones.forEach(phone => {
       i += 1
-is.push(i)
+      is.push(i)
       phoneTableELements.push(`
       <tr>
         <th scope="row">${i}</th>
@@ -186,12 +186,12 @@ is.push(i)
       </tr>`)
       let phoneBtnId = `deletePhone${i}`
       console.log(phoneBtnId)
-     // addDeleteListener(phoneBtnId)
+      // addDeleteListener(phoneBtnId)
 
 
 
     });
-    
+
     phoneTableELements.push(tableEnd)
     document.getElementById("phoneTable").innerHTML = phoneTableELements.join("")
     addDeleteListener(is)
@@ -218,16 +218,17 @@ document.getElementById("addGivenPhone").addEventListener("click", function (eve
 
 function addDeleteListener(is) {
   is.forEach(element => {
-    console.log("element :"+element )
-    document.getElementById("deletePhone"+element).addEventListener("click", function (event) {
+    console.log("element :" + element)
+    document.getElementById("deletePhone" + element).addEventListener("click", function (event) {
       event.preventDefault
       console.log("clicked on delete button)")
       let phone = {
-        number: document.getElementById("deletePhone"+element).value
+        number: document.getElementById("deletePhone" + element).value
       }
       let personID = document.getElementById("editID").value
       personFacade.deletePhone(phone, personID)
         .then(readNumbersofPerson(personID))
+        .then(renderAllPeople())
         .catch(err => {
           if (err.status) {
             err.fullError.then(e => document.getElementById("error1").innerHTML = e.message)//send to innerHTML
@@ -251,6 +252,7 @@ function addNewPhone(phone, personID) {
     //.then(document.getElementById("addGivenPhone").disabled=true)
     .then(document.getElementById("addGivenPhone").innerHTML = "Add next number")
     .then(readNumbersofPerson(personID))
+    .then(renderAllPeople())
 
     .catch(err => {
       if (err.status) {
@@ -413,7 +415,7 @@ buttAddPerson.addEventListener("click", function (event) {
     }
 
     console.log(newPerson)
-    const perosn = personFacade.addPerson(newPerson)
+    personFacade.addPerson(newPerson)
       .then(document.getElementById("error").innerHTML = "PERSON ADD")
       .then(renderAllPeople())
       .catch(err => {
